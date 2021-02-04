@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const db = require('../models');
 const ObjectId = require('mongojs').ObjectId;
+const Workout = require('../models/workout');
 
 router.post('/workouts', (_req, res) => {
     //create new workout
