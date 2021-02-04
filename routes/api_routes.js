@@ -18,3 +18,4 @@ router.get("/workouts", (_req, res) => {
         res.json(data);
     });
 });
+
