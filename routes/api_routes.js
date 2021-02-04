@@ -19,3 +19,18 @@ router.get("/workouts", (_req, res) => {
     });
 });
 
+router.put('/workouts/:id', (_req, res) => {
+    const id = _req.params.id;
+    const data = _req.body;
+    db.Workout.findOneAndUpdate(
+        { _id: ObjectId(id) },
+        {
+            $push: {
+                excercises: data,
+            },
+        },
+        { new: true }
+    ).then((workout) => {
+        res.json(workout);
+    });
+});
