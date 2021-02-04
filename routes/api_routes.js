@@ -20,6 +20,7 @@ router.get("/workouts", (_req, res) => {
 });
 
 router.put('/workouts/:id', (_req, res) => {
+    //update workout
     const id = _req.params.id;
     const data = _req.body;
     db.Workout.findOneAndUpdate(
@@ -34,3 +35,12 @@ router.put('/workouts/:id', (_req, res) => {
         res.json(workout);
     });
 });
+
+router.get('/workouts/range', (_req, res) => {
+    //get all workouts
+    db.Workout.find({}).then((data) => {
+        res.json(data);
+    });
+});
+
+module.exports = router;
