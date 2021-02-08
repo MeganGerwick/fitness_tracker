@@ -41,11 +41,7 @@ const workoutSchema = new Schema(
 );
 
 //totalDuration calculation
-workoutSchema.virtual("totalDuration").get(function () {
-    return this.exercises.reduce(reducer, 0);
-});
 
-const reducer = (accumulator, exercise) => accumulator + excercise.duration;
 
 const Workout = mongoose.model("Workout", workoutSchema);
 
