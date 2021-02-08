@@ -28,12 +28,14 @@ router.put('/workouts/:id', (_req, res) => {
         { _id: ObjectId(id) },
         {
             $push: {
-                excercises: data,
+                exercises: data,
             },
         },
         { new: true }
     ).then((workout) => {
+        console.log(workout)
         res.json(workout);
+
     });
 });
 

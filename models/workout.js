@@ -7,7 +7,7 @@ const workoutSchema = new Schema(
             type: Date,
             default: Date.now,
         },
-        excercises: [
+        exercises: [
             {
                 type: {
                     type: String,
@@ -41,7 +41,10 @@ const workoutSchema = new Schema(
 );
 
 //totalDuration calculation
-
+workoutSchema.virtual('totalDuration').get(function () {
+    return this.exercises.reduce(reducer, 0);
+});
+const reducer = (accumulator, excerise) => accumulator + excerise.duration;
 
 const Workout = mongoose.model("Workout", workoutSchema);
 
